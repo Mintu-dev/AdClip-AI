@@ -1,4 +1,4 @@
-import "./configs/instrument.mjs";
+//import "./configs/instrument.mjs";
 import express, { Request, Response } from "express";
 import path from "path";
 import cors from "cors";
