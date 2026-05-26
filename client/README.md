@@ -1,10 +1,10 @@
 # AdClip AI 🎬
 
-AI-powered UGC ad and video generator that turns product images into professional advertisement photos for social media.
+AI-powered advertisement creative generator that turns product images into professional advertisement photos and videos for social media and commercials.
 
 ## 🚀 Live Demo
 
-[Coming soon after deployment]
+(https://ad-clip-ai.vercel.app/)
 
 ## ✨ Features
 
@@ -23,7 +23,7 @@ _Database:_ PostgreSQL (Neon) + Prisma
 _AI:_ Gemini API, Pixazo Flux API  
 _Storage:_ Cloudinary  
 _Auth:_ Clerk  
-_Deployment:_ Vercel + Railway
+_Deployment:_ Vercel + Render
 
 ## 🔧 Setup
 
