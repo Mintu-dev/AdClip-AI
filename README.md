@@ -67,17 +67,25 @@ npm install
 Create .env in /server:
 
 env
+
 DATABASE_URL=your_neon_db_url
+
 CLERK_SECRET_KEY=your_clerk_secret
+
 CLOUDINARY_CLOUD_NAME=your_cloudinary_name
+
 CLOUDINARY_API_KEY=your_cloudinary_key
+
 CLOUDINARY_API_SECRET=your_cloudinary_secret
+
 PORT=8000
 
 
 Create .env in /client:
 env
+
 VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+
 VITE_API_URL=http://localhost:8000
 
 
