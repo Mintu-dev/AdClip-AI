@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Title from "../components/Title";
 import UploadZone from "../components/UploadZone";
 import {
@@ -17,6 +17,10 @@ const Genetator = () => {
   const { user } = useUser();
   const { getToken } = useAuth();
   const navigate = useNavigate();
+  
+  useEffect(() => {
+    if (!user) navigate("/");
+  }, [user, navigate]);
 
   const [name, setName] = useState("");
   const [productName, setProductName] = useState("");
