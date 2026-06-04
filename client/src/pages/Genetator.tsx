@@ -17,7 +17,7 @@ const Genetator = () => {
   const { user } = useUser();
   const { getToken } = useAuth();
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     if (!user) navigate("/");
   }, [user, navigate]);
@@ -71,6 +71,7 @@ const Genetator = () => {
     } catch (error) {
       setIsGenerating(false);
       toast.error("something went wrong. Please try again.");
+      console.log(error);
     }
   };
 

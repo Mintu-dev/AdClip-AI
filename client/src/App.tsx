@@ -15,7 +15,7 @@ import Plans from "./pages/Plans";
 import Loading from "./pages/Loading";
 import { Toaster } from "react-hot-toast";
 
-const ProtectedRoute = ({ children }: { children: React.ReactNode })=> {
+const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, isLoaded } = useUser();
   const { openSignIn } = useClerk();
 
@@ -24,9 +24,8 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode })=> {
       openSignIn();
     }
   }, [isLoaded, user, openSignIn]);
-
-  //
-  useEffect(() => {
+  
+   useEffect(() => {
     const observer = new MutationObserver(() => {
       if (document.body.style.overflow === "hidden") {
         document.body.style.overflow = "unset";
@@ -43,6 +42,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode })=> {
 
   if (!isLoaded) return null;
   if (!user) return <Navigate to="/" />;
+  return <>{children}</>;
 };
 
 function App() {
@@ -53,7 +53,7 @@ function App() {
         toastOptions={{ style: { background: "#333", color: "#fff" } }}
       />
       <SoftBackdrop />
-      { <LenisScroll /> }
+      {<LenisScroll />}
       <Navbar />
 
       <Routes>
