@@ -4,6 +4,9 @@
 * {
   font-family: "Outfit", sans-serif;
 }
+body {
+  overflow: unset !important;
+}
 
 @layer base {
   body {

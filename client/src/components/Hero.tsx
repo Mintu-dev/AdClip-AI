@@ -89,9 +89,9 @@ export default function Hero() {
                   delay: 0.2,
                 }}
               >
-                Upload a product images and a model photo — AdClip AI instantly
-                generates professional short-form videos optimized for
-                commercials & Reels.
+                Describe your Product — AdClip AI instantly generates a
+                professional AI image and turn it into a short-form videos
+                optimized for commercials & Reels.
               </motion.p>
 
               <motion.div

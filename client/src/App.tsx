@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
-import { useUser } from "@clerk/clerk-react";
+import { useUser, useClerk } from "@clerk/clerk-react";
+import { useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import SoftBackdrop from "./components/SoftBackdrop";
 import Footer from "./components/Footer";
@@ -14,11 +15,34 @@ import Plans from "./pages/Plans";
 import Loading from "./pages/Loading";
 import { Toaster } from "react-hot-toast";
 
-const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+const ProtectedRoute = ({ children }: { children: React.ReactNode })=> {
   const { user, isLoaded } = useUser();
+  const { openSignIn } = useClerk();
+
+  useEffect(() => {
+    if (isLoaded && !user) {
+      openSignIn();
+    }
+  }, [isLoaded, user, openSignIn]);
+
+  //
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      if (document.body.style.overflow === "hidden") {
+        document.body.style.overflow = "unset";
+      }
+    });
+
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["style"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   if (!isLoaded) return null;
   if (!user) return <Navigate to="/" />;
-  return <>{children}</>;
 };
 
 function App() {
@@ -29,7 +53,7 @@ function App() {
         toastOptions={{ style: { background: "#333", color: "#fff" } }}
       />
       <SoftBackdrop />
-      <LenisScroll />
+      { <LenisScroll /> }
       <Navbar />
 
       <Routes>
