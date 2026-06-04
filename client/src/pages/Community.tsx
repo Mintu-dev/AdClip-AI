@@ -9,19 +9,34 @@ const Community = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchProjects = async () => {
-    try {
-      const { data } = await api.get("/api/project/published");
-      setProjects(data.projects);
-      setLoading(false);
-    } catch (error: any) {
-      toast.error(error?.response?.data?.message || error.message);
-      console.log(error);
-    }
-  };
+  // const fetchProjects = async () => {
+  //   try {
+  //     const { data } = await api.get("/api/project/published");
+  //     setProjects(data.projects);
+  //     setLoading(false);
+  //   } catch (error: any) {
+  //     toast.error(error?.response?.data?.message || error.message);
+  //     console.log(error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchProjects();
+  // }, []);
 
   useEffect(() => {
-    fetchProjects();
+    const load = async () => {
+      try {
+        const { data } = await api.get("/api/project/published");
+        setProjects(data.projects);
+      } catch (error: unknown) {
+        toast.error("Something went wrong. Please try again.");
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    load();
   }, []);
 
   return loading ? (
@@ -59,12 +74,12 @@ const Community = () => {
               isPublic: true,
               isGenerating: false,
               isPublished: true,
-            } as any,
+            },
             ...projects,
           ].map((project) => (
             <ProjectCard
               key={project.id}
-              gen={project}
+              gen={project as Project}
               setGenerations={setProjects}
               forCommunity={true}
             />
