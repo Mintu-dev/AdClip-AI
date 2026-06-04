@@ -65,6 +65,7 @@ npm install
 3. *Set up environment variables*
 
 Create .env in /server:
+
 env
 DATABASE_URL=your_neon_db_url
 CLERK_SECRET_KEY=your_clerk_secret
